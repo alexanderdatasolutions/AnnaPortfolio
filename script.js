@@ -223,7 +223,7 @@ loadPhotoStructure();
 const galleryGrid = document.getElementById('galleryGrid');
 const viewMoreBtn = document.getElementById('viewMoreBtn');
 let showingAll = false;
-const initialDisplayCount = 20;
+const initialDisplayCount = 6; // 2 rows of 3
 
 // Create gallery items
 allPhotos.forEach((photo, index) => {
@@ -263,7 +263,7 @@ viewMoreBtn.addEventListener('click', () => {
                 item.classList.add('hidden');
             }
         });
-        viewMoreBtn.textContent = 'View Full Portfolio';
+        viewMoreBtn.textContent = 'View Full Gallery';
         showingAll = false;
         
         // Scroll back to gallery section
