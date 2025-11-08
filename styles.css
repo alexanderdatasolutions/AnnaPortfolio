@@ -639,6 +639,18 @@ body {
     border-radius: 8px;
 }
 
+#lightbox-tiktok-container {
+    margin: auto;
+    display: block;
+    max-width: 605px;
+    min-height: 800px;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    animation: zoom 0.3s;
+}
+
 .lightbox-info {
     position: absolute;
     right: 5%;

@@ -34,7 +34,7 @@ async function loadPhotoStructure() {
     
     // Load from photoManifest
     if (typeof photoManifest !== 'undefined' && photoManifest.length > 0) {
-        photoManifest.forEach(({ folder, file }) => {
+        photoManifest.forEach(({ folder, file, type }) => {
             // Check if there's custom caption data
             const customData = (typeof customCaptions !== 'undefined' && customCaptions[file]) ? customCaptions[file] : null;
             
@@ -51,7 +51,9 @@ async function loadPhotoStructure() {
                 id: photoId++,
                 file: file,
                 folder: folder,
-                path: `photos/${folder}/${file}`,
+                type: type || 'image', // 'image' or 'tiktok'
+                path: type === 'tiktok' ? null : `photos/${folder}/${file}`,
+                tiktokId: customData?.tiktokId || null,
                 emoji: customData?.emoji || folderInfo.emoji,
                 title: customData?.title || folderInfo.name,
                 description: customData?.description || folderInfo.description,
@@ -162,25 +164,45 @@ if (typeof featuredCategories !== 'undefined' && featuredCategories.length > 0) 
         const coverPhoto = categoryPhotos[coverPhotoIndex];
         usedCoverPhotoIds.add(coverPhoto.id);
         
-        const img = document.createElement('img');
-        img.src = coverPhoto.path;
-        img.alt = categoryData.name;
-        img.loading = 'lazy';
-        
-        // Hide gallery item if image fails to load
-        img.onerror = function() {
-            galleryItem.style.display = 'none';
-        };
-        
-        galleryItem.innerHTML = `
-            <div class="gallery-overlay">
-                <div class="emoji">${categoryData.emoji}</div>
-                <div class="title">${categoryData.name}</div>
-                <div class="description">${categoryData.description}</div>
-                <div class="photo-count">${categoryPhotos.length} photo${categoryPhotos.length !== 1 ? 's' : ''}</div>
-            </div>
+        // Create overlay first
+        const overlay = document.createElement('div');
+        overlay.className = 'gallery-overlay';
+        overlay.innerHTML = `
+            <div class="emoji">${categoryData.emoji}</div>
+            <div class="title">${categoryData.name}</div>
+            <div class="description">${categoryData.description}</div>
+            <div class="photo-count">${categoryPhotos.length} photo${categoryPhotos.length !== 1 ? 's' : ''}</div>
         `;
-        galleryItem.insertBefore(img, galleryItem.firstChild);
+        
+        // For TikTok videos, use iframe
+        if (coverPhoto.type === 'tiktok') {
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.tiktok.com/embed/v2/${coverPhoto.tiktokId}`;
+            iframe.style.border = 'none';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.position = 'absolute';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.allow = 'encrypted-media';
+            
+            galleryItem.style.position = 'relative';
+            galleryItem.appendChild(iframe);
+            galleryItem.appendChild(overlay);
+        } else {
+            const img = document.createElement('img');
+            img.src = coverPhoto.path;
+            img.alt = categoryData.name;
+            img.loading = 'lazy';
+            
+            // Hide gallery item if image fails to load
+            img.onerror = function() {
+                galleryItem.style.display = 'none';
+            };
+            
+            galleryItem.appendChild(img);
+            galleryItem.appendChild(overlay);
+        }
         
         // Click opens lightbox with first photo from this category
         galleryItem.addEventListener('click', () => openCategoryLightbox(categoryTag));
@@ -198,24 +220,44 @@ viewMoreBtn.addEventListener('click', () => {
             const galleryItem = document.createElement('div');
             galleryItem.className = 'gallery-item';
             
-            const img = document.createElement('img');
-            img.src = photo.path;
-            img.alt = photo.title;
-            img.loading = 'lazy';
-            
-            // Hide gallery item if image fails to load
-            img.onerror = function() {
-                galleryItem.style.display = 'none';
-            };
-            
-            galleryItem.innerHTML = `
-                <div class="gallery-overlay">
-                    <div class="emoji">${photo.emoji}</div>
-                    <div class="title">${photo.title}</div>
-                    <div class="description">${photo.description}</div>
-                </div>
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'gallery-overlay';
+            overlay.innerHTML = `
+                <div class="emoji">${photo.emoji}</div>
+                <div class="title">${photo.title}</div>
+                <div class="description">${photo.description}</div>
             `;
-            galleryItem.insertBefore(img, galleryItem.firstChild);
+            
+            if (photo.type === 'tiktok') {
+                // TikTok embed
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://www.tiktok.com/embed/v2/${photo.tiktokId}`;
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.position = 'absolute';
+                iframe.style.top = '0';
+                iframe.style.left = '0';
+                iframe.allow = 'encrypted-media';
+                
+                galleryItem.style.position = 'relative';
+                galleryItem.appendChild(iframe);
+                galleryItem.appendChild(overlay);
+            } else {
+                const img = document.createElement('img');
+                img.src = photo.path;
+                img.alt = photo.title;
+                img.loading = 'lazy';
+                
+                // Hide gallery item if image fails to load
+                img.onerror = function() {
+                    galleryItem.style.display = 'none';
+                };
+                
+                galleryItem.appendChild(img);
+                galleryItem.appendChild(overlay);
+            }
             galleryItem.addEventListener('click', () => openLightbox(photo.id));
             galleryGrid.appendChild(galleryItem);
         });
@@ -245,24 +287,43 @@ viewMoreBtn.addEventListener('click', () => {
             const coverPhoto = categoryPhotos[coverPhotoIndex];
             usedCoverPhotoIds.add(coverPhoto.id);
             
-            const img = document.createElement('img');
-            img.src = coverPhoto.path;
-            img.alt = categoryData.name;
-            img.loading = 'lazy';
-            
-            img.onerror = function() {
-                galleryItem.style.display = 'none';
-            };
-            
-            galleryItem.innerHTML = `
-                <div class="gallery-overlay">
-                    <div class="emoji">${categoryData.emoji}</div>
-                    <div class="title">${categoryData.name}</div>
-                    <div class="description">${categoryData.description}</div>
-                    <div class="photo-count">${categoryPhotos.length} photo${categoryPhotos.length !== 1 ? 's' : ''}</div>
-                </div>
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'gallery-overlay';
+            overlay.innerHTML = `
+                <div class="emoji">${categoryData.emoji}</div>
+                <div class="title">${categoryData.name}</div>
+                <div class="description">${categoryData.description}</div>
+                <div class="photo-count">${categoryPhotos.length} photo${categoryPhotos.length !== 1 ? 's' : ''}</div>
             `;
-            galleryItem.insertBefore(img, galleryItem.firstChild);
+            
+            if (coverPhoto.type === 'tiktok') {
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://www.tiktok.com/embed/v2/${coverPhoto.tiktokId}`;
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.position = 'absolute';
+                iframe.style.top = '0';
+                iframe.style.left = '0';
+                iframe.allow = 'encrypted-media';
+                
+                galleryItem.style.position = 'relative';
+                galleryItem.appendChild(iframe);
+                galleryItem.appendChild(overlay);
+            } else {
+                const img = document.createElement('img');
+                img.src = coverPhoto.path;
+                img.alt = categoryData.name;
+                img.loading = 'lazy';
+                
+                img.onerror = function() {
+                    galleryItem.style.display = 'none';
+                };
+                
+                galleryItem.appendChild(img);
+                galleryItem.appendChild(overlay);
+            }
             galleryItem.addEventListener('click', () => openCategoryLightbox(categoryTag));
             galleryGrid.appendChild(galleryItem);
         });
@@ -317,7 +378,36 @@ function openLightbox(photoId) {
 }
 
 function showImage(photo) {
-    lightboxImg.src = photo.path;
+    if (photo.type === 'tiktok') {
+        // Show TikTok embed
+        lightboxImg.style.display = 'none';
+        let tiktokContainer = document.getElementById('lightbox-tiktok-container');
+        if (!tiktokContainer) {
+            tiktokContainer = document.createElement('div');
+            tiktokContainer.id = 'lightbox-tiktok-container';
+            tiktokContainer.className = 'lightbox-content';
+            lightboxImg.parentNode.insertBefore(tiktokContainer, lightboxImg);
+        }
+        tiktokContainer.style.display = 'block';
+        tiktokContainer.innerHTML = `<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@anna_riley16/video/${photo.tiktokId}" data-video-id="${photo.tiktokId}" style="max-width: 605px;min-width: 325px;" > <section> </section> </blockquote>`;
+        
+        // Reload TikTok embed script
+        const script = document.createElement('script');
+        script.src = 'https://www.tiktok.com/embed.js';
+        script.async = true;
+        tiktokContainer.appendChild(script);
+        
+        // Force TikTok to process the embed
+        if (window.tiktokEmbed) {
+            window.tiktokEmbed.lib.render(tiktokContainer);
+        }
+    } else {
+        // Show image
+        const tiktokContainer = document.getElementById('lightbox-tiktok-container');
+        if (tiktokContainer) tiktokContainer.style.display = 'none';
+        lightboxImg.style.display = 'block';
+        lightboxImg.src = photo.path;
+    }
     lightboxEmoji.textContent = photo.emoji;
     lightboxTitle.textContent = photo.title;
     lightboxDescription.textContent = photo.description;
@@ -341,16 +431,32 @@ function showRelatedPhotos() {
             thumb.classList.add('active');
         }
         
-        const img = document.createElement('img');
-        img.src = photo.path;
-        img.alt = photo.title;
+        if (photo.type === 'tiktok') {
+            // For TikTok videos, use an iframe thumbnail
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.tiktok.com/embed/v2/${photo.tiktokId}`;
+            iframe.style.cssText = `
+                width: 100%;
+                height: 100%;
+                border: none;
+                pointer-events: none;
+            `;
+            iframe.scrolling = 'no';
+            thumb.appendChild(iframe);
+            thumb.title = photo.title;
+        } else {
+            const img = document.createElement('img');
+            img.src = photo.path;
+            img.alt = photo.title;
+            
+            // Only add the thumbnail if the image loads successfully
+            img.onerror = function() {
+                thumb.remove(); // Remove if image fails to load
+            };
+            
+            thumb.appendChild(img);
+        }
         
-        // Only add the thumbnail if the image loads successfully
-        img.onerror = function() {
-            thumb.remove(); // Remove if image fails to load
-        };
-        
-        thumb.appendChild(img);
         thumb.addEventListener('click', () => {
             currentPhoto = photo;
             showImage(photo);

@@ -16,7 +16,9 @@ const featuredCategories = [
 // Format: { folder: 'folder-name', file: 'filename.jpg' }
 // The system will auto-apply tags and settings based on folder and customCaptions
 const photoManifest = [
-    // Barrett Jackson Featured
+    // Barrett Jackson Featured - TikToks first for main thumbnail
+    { folder: '1-barrett-jackson-featured', file: 'tiktok-7329679072311790891', type: 'tiktok' },
+    { folder: '1-barrett-jackson-featured', file: 'tiktok-7462436827949960494', type: 'tiktok' },
     { folder: '1-barrett-jackson-featured', file: 'carclips.jpeg' },
     { folder: '1-barrett-jackson-featured', file: 'carclips2.jpeg' },
     { folder: '1-barrett-jackson-featured', file: 'k10design.jpeg' },
@@ -143,11 +145,27 @@ const customCaptions = {
         tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design', 'classic-cars']
     },
     'overallslookingback.jpeg': {
-        emoji: '�',
+        emoji: '🏁',
         title: 'Barrett Jackson Overalls',
         description: 'Anna in branded Barrett Jackson apparel',
         details: 'Behind-the-scenes content featuring Barrett Jackson branded overalls at auction events.',
         tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design', 'behind-the-scenes', 'events']
+    },
+    'tiktok-7329679072311790891': {
+        emoji: '🎥',
+        title: 'Barrett Jackson Viral Video',
+        description: 'Viral TikTok content',
+        details: 'Viral TikTok video showcasing Barrett Jackson auction highlights and collector cars.',
+        tags: ['1-barrett-jackson-featured', 'barrett-jackson', 'events', 'collector-cars'],
+        tiktokId: '7329679072311790891'
+    },
+    'tiktok-7462436827949960494': {
+        emoji: '🎥',
+        title: 'Barrett Jackson Coverage',
+        description: 'Exclusive auction content',
+        details: 'Behind-the-scenes TikTok coverage from Barrett Jackson featuring exclusive collector car content.',
+        tags: ['1-barrett-jackson-featured', 'barrett-jackson', 'events', 'behind-the-scenes'],
+        tiktokId: '7462436827949960494'
     },
     
     // Merchandise Featured
