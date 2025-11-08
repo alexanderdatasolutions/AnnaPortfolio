@@ -30,6 +30,7 @@ const photoManifest = [
     { folder: '2-merchandise-featured', file: 'bj_sleeveless_dress_back.jpeg' },
     { folder: '2-merchandise-featured', file: 'bj_sleeveless_dress_front.jpeg' },
     { folder: '2-merchandise-featured', file: 'car_design_polo_front.jpeg' },
+    { folder: '2-merchandise-featured', file: 'Linen set_page-0005-imageonline.co-merged.jpg' },
     
     // Restaurant Featured
     { folder: '3-restaurant-featured', file: '70C1ECA8-661C-404A-BA0A-AB54393142F5.png' }
@@ -198,6 +199,20 @@ const customCaptions = {
         description: 'Classic automotive enthusiast apparel',
         details: 'Premium polo shirt design featuring Barrett Jackson automotive graphics and branding.',
         tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson', 'classic-cars']
+    },
+    'linen_email_design.png': {
+        emoji: '📧',
+        title: 'Linen Set Email Campaign',
+        description: 'Email marketing design',
+        details: 'Custom email design showcasing product photography and promotional content for merchandise campaigns.',
+        tags: ['2-merchandise-featured', 'merchandise-design']
+    },
+    'Linen set_page-0005-imageonline.co-merged.jpg': {
+        emoji: '📧',
+        title: 'Linen Set Email Campaign',
+        description: 'Email marketing design',
+        details: 'Custom email design showcasing product photography and promotional content for merchandise campaigns. Full scrollable email layout demonstrating design skills.',
+        tags: ['2-merchandise-featured', 'merchandise-design']
     },
     
     // Restaurant Featured

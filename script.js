@@ -90,24 +90,6 @@ function getRelatedPhotos(photo) {
     return Array.from(relatedSet);
 }
 
-// Get photos with the same tags (related photos)
-function getRelatedPhotos(photo) {
-    const relatedSet = new Set();
-    
-    // Collect all photos that share at least one tag
-    photo.tags.forEach(tag => {
-        if (photosByTag[tag]) {
-            photosByTag[tag].forEach(p => {
-                if (p.id !== photo.id) { // Don't include the current photo
-                    relatedSet.add(p);
-                }
-            });
-        }
-    });
-    
-    return Array.from(relatedSet);
-}
-
 // Get category info
 function getCategoryInfo(tags) {
     // Get the first tag's info
@@ -157,9 +139,12 @@ const viewMoreBtn = document.getElementById('viewMoreBtn');
 let showingAll = false;
 const initialDisplayCount = 6; // Will show 3 category cards initially
 
+// Track which photos are used as cover images
+const usedCoverPhotoIds = new Set();
+
 // Create category cards for featured collections
 if (typeof featuredCategories !== 'undefined' && featuredCategories.length > 0) {
-    featuredCategories.forEach(categoryTag => {
+    featuredCategories.forEach((categoryTag, index) => {
         const categoryPhotos = photosByTag[categoryTag] || [];
         if (categoryPhotos.length === 0) return; // Skip empty categories
         
@@ -172,11 +157,13 @@ if (typeof featuredCategories !== 'undefined' && featuredCategories.length > 0) 
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item category-card';
         
-        // Use first photo as background
-        const firstPhoto = categoryPhotos[0];
+        // Use a different photo for each category - rotate through available photos
+        const coverPhotoIndex = index % categoryPhotos.length;
+        const coverPhoto = categoryPhotos[coverPhotoIndex];
+        usedCoverPhotoIds.add(coverPhoto.id);
         
         const img = document.createElement('img');
-        img.src = firstPhoto.path;
+        img.src = coverPhoto.path;
         img.alt = categoryData.name;
         img.loading = 'lazy';
         
@@ -238,8 +225,9 @@ viewMoreBtn.addEventListener('click', () => {
     } else {
         // Clear grid and show category cards again
         galleryGrid.innerHTML = '';
+        usedCoverPhotoIds.clear(); // Reset cover photos
         
-        featuredCategories.forEach(categoryTag => {
+        featuredCategories.forEach((categoryTag, index) => {
             const categoryPhotos = photosByTag[categoryTag] || [];
             if (categoryPhotos.length === 0) return;
             
@@ -252,10 +240,13 @@ viewMoreBtn.addEventListener('click', () => {
             const galleryItem = document.createElement('div');
             galleryItem.className = 'gallery-item category-card';
             
-            const firstPhoto = categoryPhotos[0];
+            // Use a different photo for each category
+            const coverPhotoIndex = index % categoryPhotos.length;
+            const coverPhoto = categoryPhotos[coverPhotoIndex];
+            usedCoverPhotoIds.add(coverPhoto.id);
             
             const img = document.createElement('img');
-            img.src = firstPhoto.path;
+            img.src = coverPhoto.path;
             img.alt = categoryData.name;
             img.loading = 'lazy';
             
