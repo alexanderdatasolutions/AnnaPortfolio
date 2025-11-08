@@ -46,20 +46,20 @@ const categoryInfo = {
     '1-barrett-jackson-featured': {
         name: 'Barrett Jackson',
         emoji: '🏁',
-        description: 'Premier collector car auction coverage',
-        defaultDetails: 'Exclusive coverage from Barrett Jackson auctions, showcasing world-class collector vehicles and the energy of the auction floor.'
+        description: 'TikTok content & merchandise design',
+        defaultDetails: 'Barrett Jackson viral social media content and custom apparel design mockups.'
     },
     '2-merchandise-featured': {
         name: 'Merchandise & Design',
         emoji: '👕',
-        description: 'Custom clothing and branded merchandise',
-        defaultDetails: 'Custom merchandise design including Barrett Jackson apparel, branded clothing, and creative graphic design work.'
+        description: 'Custom apparel design mockups',
+        defaultDetails: 'Professional apparel design mockups for Barrett Jackson branded merchandise and custom clothing lines.'
     },
     '3-restaurant-featured': {
         name: 'Restaurant Marketing',
-        emoji: '�️',
+        emoji: '🍽️',
         description: 'The Brook Restaurant & Bar',
-        defaultDetails: 'Marketing campaigns and social media content for The Brook Restaurant & Bar, driving engagement and foot traffic.'
+        defaultDetails: 'Social media marketing and promotional graphics for The Brook Restaurant & Bar.'
     },
     'featured-showcase': {
         name: 'Featured Work',
@@ -125,46 +125,46 @@ const customCaptions = {
     // Barrett Jackson Featured
     'carclips.jpeg': {
         emoji: '👕',
-        title: 'Barrett Jackson Merchandise Content',
-        description: 'Branded apparel showcase',
-        details: 'Social media content showcasing Barrett Jackson branded merchandise and apparel.',
-        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design', 'events']
+        title: 'Barrett Jackson Apparel Mockup',
+        description: 'Branded merchandise design',
+        details: 'Apparel design mockup featuring Barrett Jackson branded merchandise.',
+        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design']
     },
     'carclips2.jpeg': {
         emoji: '👕',
-        title: 'Barrett Jackson Apparel Display',
-        description: 'Collector merchandise collection',
-        details: 'Showcasing Barrett Jackson branded apparel and collector merchandise at auction events.',
-        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design', 'collector-cars']
+        title: 'Barrett Jackson Merchandise Mockup',
+        description: 'Custom apparel design',
+        details: 'Professional mockup showcasing Barrett Jackson branded apparel designs.',
+        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design']
     },
     'k10design.jpeg': {
         emoji: '👕',
         title: 'K10 Truck Shirt Design',
-        description: 'Barrett Jackson classic truck apparel',
-        details: 'Custom K10 truck shirt design for Barrett Jackson, featuring classic truck graphics.',
-        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design', 'classic-cars']
+        description: 'Classic truck graphic apparel',
+        details: 'Custom t-shirt design featuring K10 truck graphics with Barrett Jackson branding.',
+        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design']
     },
     'overallslookingback.jpeg': {
-        emoji: '🏁',
-        title: 'Barrett Jackson Overalls',
-        description: 'Anna in branded Barrett Jackson apparel',
-        details: 'Behind-the-scenes content featuring Barrett Jackson branded overalls at auction events.',
-        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design', 'behind-the-scenes', 'events']
+        emoji: '👕',
+        title: 'Barrett Jackson Overalls Design',
+        description: 'Branded workwear apparel',
+        details: 'Custom overalls design mockup featuring Barrett Jackson branding and automotive theme.',
+        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design']
     },
     'tiktok-7329679072311790891': {
         emoji: '🎥',
-        title: 'Barrett Jackson Viral Video',
-        description: 'Viral TikTok content',
-        details: 'Viral TikTok video showcasing Barrett Jackson auction highlights and collector cars.',
-        tags: ['1-barrett-jackson-featured', 'barrett-jackson', 'events', 'collector-cars'],
+        title: 'Barrett Jackson TikTok',
+        description: '3.5M+ views viral video',
+        details: 'Viral TikTok video with 3.5M+ views featuring Barrett Jackson auction content.',
+        tags: ['1-barrett-jackson-featured', 'barrett-jackson'],
         tiktokId: '7329679072311790891'
     },
     'tiktok-7462436827949960494': {
         emoji: '🎥',
-        title: 'Barrett Jackson Coverage',
-        description: 'Exclusive auction content',
-        details: 'Behind-the-scenes TikTok coverage from Barrett Jackson featuring exclusive collector car content.',
-        tags: ['1-barrett-jackson-featured', 'barrett-jackson', 'events', 'behind-the-scenes'],
+        title: 'Get Ready With Me - Barrett Jackson',
+        description: 'Barrett Jackson event preparation',
+        details: 'Get Ready With Me style TikTok video preparing for Barrett Jackson auction event.',
+        tags: ['1-barrett-jackson-featured', 'barrett-jackson'],
         tiktokId: '7462436827949960494'
     },
     
@@ -172,64 +172,64 @@ const customCaptions = {
     'barret_design.jpeg': {
         emoji: '👕',
         title: 'Barrett Jackson Apparel Design',
-        description: 'Custom branded merchandise',
-        details: 'Custom Barrett Jackson merchandise design showcasing branded apparel for collectors and enthusiasts.',
+        description: 'Custom merchandise mockup',
+        details: 'Professional mockup of Barrett Jackson branded apparel design with car graphics.',
         tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
     },
     'bj_hoodie_back.jpeg': {
         emoji: '👕',
-        title: 'Barrett Jackson Hoodie',
-        description: 'Premium branded hoodie design',
-        details: 'Custom hoodie featuring Barrett Jackson branding with bold back design.',
+        title: 'Barrett Jackson Hoodie Back Design',
+        description: 'Hoodie back graphic mockup',
+        details: 'Custom hoodie back design mockup featuring Barrett Jackson branding and graphics.',
         tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
     },
     'bj_k10_shirt_back.jpeg': {
         emoji: '👕',
-        title: 'Barrett Jackson K10 Shirt',
-        description: 'Classic truck apparel design',
-        details: 'Custom shirt design featuring the iconic K10 truck with Barrett Jackson branding.',
-        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson', 'classic-cars']
+        title: 'K10 Truck Shirt Back Design',
+        description: 'Classic truck back graphic',
+        details: 'T-shirt back design mockup featuring K10 truck illustration with Barrett Jackson branding.',
+        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
     },
     'bj_sleeveless_dress_back_type2.jpeg': {
         emoji: '👗',
-        title: 'Barrett Jackson Dress Design',
-        description: 'Elegant collector apparel',
-        details: 'Sleeveless dress design with Barrett Jackson branding for car show events.',
+        title: 'Barrett Jackson Dress Back Design',
+        description: 'Dress back graphic mockup',
+        details: 'Sleeveless dress back design mockup with Barrett Jackson branding.',
         tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
     },
     'bj_sleeveless_dress_back.jpeg': {
         emoji: '👗',
-        title: 'Barrett Jackson Event Dress',
-        description: 'Premium event apparel',
-        details: 'Custom dress design featuring Barrett Jackson branding, perfect for auction events.',
-        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson', 'events']
+        title: 'Barrett Jackson Dress Design',
+        description: 'Dress apparel mockup',
+        details: 'Professional dress design mockup featuring Barrett Jackson branding on back.',
+        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
     },
     'bj_sleeveless_dress_front.jpeg': {
         emoji: '👗',
-        title: 'Barrett Jackson Dress Collection',
-        description: 'Exclusive collector apparel',
-        details: 'Elegant dress design featuring Barrett Jackson branding for enthusiasts and collectors.',
+        title: 'Barrett Jackson Dress Front Design',
+        description: 'Dress front graphic mockup',
+        details: 'Sleeveless dress front design mockup with Barrett Jackson logo placement.',
         tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
     },
     'car_design_polo_front.jpeg': {
         emoji: '👕',
-        title: 'Barrett Jackson Polo Design',
-        description: 'Classic automotive enthusiast apparel',
-        details: 'Premium polo shirt design featuring Barrett Jackson automotive graphics and branding.',
-        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson', 'classic-cars']
+        title: 'Barrett Jackson Polo Front Design',
+        description: 'Polo shirt front graphic',
+        details: 'Polo shirt front design mockup featuring Barrett Jackson automotive graphics and branding.',
+        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
     },
     'linen_email_design.png': {
         emoji: '📧',
-        title: 'Linen Set Email Campaign',
-        description: 'Email marketing design',
-        details: 'Custom email design showcasing product photography and promotional content for merchandise campaigns.',
+        title: 'Linen Set Email Design',
+        description: 'Email marketing template',
+        details: 'Custom email marketing template design for product launch campaign.',
         tags: ['2-merchandise-featured', 'merchandise-design']
     },
     'Linen set_page-0005-imageonline.co-merged.jpg': {
         emoji: '📧',
         title: 'Linen Set Email Campaign',
-        description: 'Email marketing design',
-        details: 'Custom email design showcasing product photography and promotional content for merchandise campaigns. Full scrollable email layout demonstrating design skills.',
+        description: 'Full email marketing layout',
+        details: 'Complete email marketing campaign design with product photography and promotional layout.',
         tags: ['2-merchandise-featured', 'merchandise-design']
     },
     
@@ -237,8 +237,8 @@ const customCaptions = {
     '70C1ECA8-661C-404A-BA0A-AB54393142F5.png': {
         emoji: '🍽️',
         title: 'The Brook Restaurant Marketing',
-        description: 'Restaurant & bar promotion',
-        details: 'Social media marketing content for The Brook Restaurant & Bar, driving engagement and foot traffic.',
+        description: 'Social media promotional graphic',
+        details: 'Social media marketing graphic for The Brook Restaurant & Bar promotional campaign.',
         tags: ['3-restaurant-featured', 'restaurant-marketing']
     }
 };
