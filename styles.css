@@ -415,6 +415,15 @@ body {
     opacity: 0.9;
 }
 
+.gallery-overlay .photo-count {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
 .view-more-container {
     text-align: center;
     margin-top: 3rem;

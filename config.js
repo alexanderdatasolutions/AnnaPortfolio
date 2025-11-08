@@ -2,15 +2,73 @@
 // ================================
 // Edit this file to customize your portfolio content!
 
+// FEATURED CATEGORIES
+// The homepage shows 2 photos from each of these 3 folders (6 total)
+// Just drag your best 2 photos into each folder!
+const featuredCategories = [
+    '1-barrett-jackson-featured',
+    '2-merchandise-featured', 
+    '3-restaurant-featured'
+];
+
+// PHOTO MANIFEST
+// List all photos in your featured folders here
+// Format: { folder: 'folder-name', file: 'filename.jpg' }
+// The system will auto-apply tags and settings based on folder and customCaptions
+const photoManifest = [
+    // Barrett Jackson Featured
+    { folder: '1-barrett-jackson-featured', file: 'carclips.jpeg' },
+    { folder: '1-barrett-jackson-featured', file: 'carclips2.jpeg' },
+    { folder: '1-barrett-jackson-featured', file: 'k10design.jpeg' },
+    { folder: '1-barrett-jackson-featured', file: 'overallslookingback.jpeg' },
+    
+    // Merchandise Featured
+    { folder: '2-merchandise-featured', file: 'barret_design.jpeg' },
+    { folder: '2-merchandise-featured', file: 'bj_hoodie_back.jpeg' },
+    { folder: '2-merchandise-featured', file: 'bj_k10_shirt_back.jpeg' },
+    { folder: '2-merchandise-featured', file: 'bj_sleeveless_dress_back_type2.jpeg' },
+    { folder: '2-merchandise-featured', file: 'bj_sleeveless_dress_back.jpeg' },
+    { folder: '2-merchandise-featured', file: 'bj_sleeveless_dress_front.jpeg' },
+    { folder: '2-merchandise-featured', file: 'car_design_polo_front.jpeg' },
+    
+    // Restaurant Featured
+    { folder: '3-restaurant-featured', file: '70C1ECA8-661C-404A-BA0A-AB54393142F5.png' }
+];
+
 // CATEGORY/FOLDER SETTINGS
-// Each folder in photos/ becomes an automatic collection
+// Each folder in photos/ becomes an automatic collection (tags)
+// Photos can be in MULTIPLE folders - they're like hashtags!
 // When someone clicks a photo, they see all photos from the same folder
 const categoryInfo = {
-    'barrett-jackson': {
+    '1-barrett-jackson-featured': {
         name: 'Barrett Jackson',
         emoji: '🏁',
         description: 'Premier collector car auction coverage',
         defaultDetails: 'Exclusive coverage from Barrett Jackson auctions, showcasing world-class collector vehicles and the energy of the auction floor.'
+    },
+    '2-merchandise-featured': {
+        name: 'Merchandise & Design',
+        emoji: '👕',
+        description: 'Custom clothing and branded merchandise',
+        defaultDetails: 'Custom merchandise design including Barrett Jackson apparel, branded clothing, and creative graphic design work.'
+    },
+    '3-restaurant-featured': {
+        name: 'Restaurant Marketing',
+        emoji: '�️',
+        description: 'The Brook Restaurant & Bar',
+        defaultDetails: 'Marketing campaigns and social media content for The Brook Restaurant & Bar, driving engagement and foot traffic.'
+    },
+    'featured-showcase': {
+        name: 'Featured Work',
+        emoji: '⭐',
+        description: 'Best of Barrett Jackson, merchandise design, and marketing',
+        defaultDetails: 'Showcasing the best work across automotive content creation, custom merchandise design, and marketing campaigns.'
+    },
+    'merchandise-design': {
+        name: 'Merchandise & Design',
+        emoji: '👕',
+        description: 'Custom clothing and branded merchandise',
+        defaultDetails: 'Custom merchandise design including Barrett Jackson apparel, branded clothing, and creative graphic design work.'
     },
     'american-heart-association': {
         name: 'American Heart Association',
@@ -57,15 +115,99 @@ const categoryInfo = {
 };
 
 // CUSTOM PHOTO CAPTIONS
-// Add specific captions for individual photos here
-// Format: 'folder/filename.jpg': { title: '...', description: '...', details: '...' }
+// Add your photos here with their details and tags!
+// Format: 'filename.jpg': { emoji, title, description, details, tags: [...] }
+// Tags can be multiple! ['barrett-jackson', 'merchandise-design']
 const customCaptions = {
-    // Example - you can add specific captions for individual photos:
-    // 'barrett-jackson/photo1.jpeg': {
-    //     title: 'Custom Title',
-    //     description: 'Custom short description',
-    //     details: 'Custom detailed description that shows in lightbox'
-    // },
+    // Barrett Jackson Featured
+    'carclips.jpeg': {
+        emoji: '👕',
+        title: 'Barrett Jackson Merchandise Content',
+        description: 'Branded apparel showcase',
+        details: 'Social media content showcasing Barrett Jackson branded merchandise and apparel.',
+        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design', 'events']
+    },
+    'carclips2.jpeg': {
+        emoji: '👕',
+        title: 'Barrett Jackson Apparel Display',
+        description: 'Collector merchandise collection',
+        details: 'Showcasing Barrett Jackson branded apparel and collector merchandise at auction events.',
+        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design', 'collector-cars']
+    },
+    'k10design.jpeg': {
+        emoji: '👕',
+        title: 'K10 Truck Shirt Design',
+        description: 'Barrett Jackson classic truck apparel',
+        details: 'Custom K10 truck shirt design for Barrett Jackson, featuring classic truck graphics.',
+        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design', 'classic-cars']
+    },
+    'overallslookingback.jpeg': {
+        emoji: '�',
+        title: 'Barrett Jackson Overalls',
+        description: 'Anna in branded Barrett Jackson apparel',
+        details: 'Behind-the-scenes content featuring Barrett Jackson branded overalls at auction events.',
+        tags: ['1-barrett-jackson-featured', '2-merchandise-featured', 'barrett-jackson', 'merchandise-design', 'behind-the-scenes', 'events']
+    },
+    
+    // Merchandise Featured
+    'barret_design.jpeg': {
+        emoji: '👕',
+        title: 'Barrett Jackson Apparel Design',
+        description: 'Custom branded merchandise',
+        details: 'Custom Barrett Jackson merchandise design showcasing branded apparel for collectors and enthusiasts.',
+        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
+    },
+    'bj_hoodie_back.jpeg': {
+        emoji: '👕',
+        title: 'Barrett Jackson Hoodie',
+        description: 'Premium branded hoodie design',
+        details: 'Custom hoodie featuring Barrett Jackson branding with bold back design.',
+        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
+    },
+    'bj_k10_shirt_back.jpeg': {
+        emoji: '👕',
+        title: 'Barrett Jackson K10 Shirt',
+        description: 'Classic truck apparel design',
+        details: 'Custom shirt design featuring the iconic K10 truck with Barrett Jackson branding.',
+        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson', 'classic-cars']
+    },
+    'bj_sleeveless_dress_back_type2.jpeg': {
+        emoji: '👗',
+        title: 'Barrett Jackson Dress Design',
+        description: 'Elegant collector apparel',
+        details: 'Sleeveless dress design with Barrett Jackson branding for car show events.',
+        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
+    },
+    'bj_sleeveless_dress_back.jpeg': {
+        emoji: '👗',
+        title: 'Barrett Jackson Event Dress',
+        description: 'Premium event apparel',
+        details: 'Custom dress design featuring Barrett Jackson branding, perfect for auction events.',
+        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson', 'events']
+    },
+    'bj_sleeveless_dress_front.jpeg': {
+        emoji: '👗',
+        title: 'Barrett Jackson Dress Collection',
+        description: 'Exclusive collector apparel',
+        details: 'Elegant dress design featuring Barrett Jackson branding for enthusiasts and collectors.',
+        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson']
+    },
+    'car_design_polo_front.jpeg': {
+        emoji: '👕',
+        title: 'Barrett Jackson Polo Design',
+        description: 'Classic automotive enthusiast apparel',
+        details: 'Premium polo shirt design featuring Barrett Jackson automotive graphics and branding.',
+        tags: ['2-merchandise-featured', '1-barrett-jackson-featured', 'merchandise-design', 'barrett-jackson', 'classic-cars']
+    },
+    
+    // Restaurant Featured
+    '70C1ECA8-661C-404A-BA0A-AB54393142F5.png': {
+        emoji: '🍽️',
+        title: 'The Brook Restaurant Marketing',
+        description: 'Restaurant & bar promotion',
+        details: 'Social media marketing content for The Brook Restaurant & Bar, driving engagement and foot traffic.',
+        tags: ['3-restaurant-featured', 'restaurant-marketing']
+    }
 };
 
 // HERO SLIDESHOW IMAGES
@@ -80,5 +222,5 @@ const heroImages = [
 // Don't edit below this line unless you know what you're doing!
 // ================================================================
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { categoryInfo, customCaptions, heroImages };
+    module.exports = { categoryInfo, customCaptions, heroImages, featuredCategories, photoManifest };
 }
